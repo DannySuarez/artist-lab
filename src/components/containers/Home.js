@@ -1,30 +1,35 @@
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 import { getArtist } from '../../services/ArtistApi';
 import Input from '../Input';
 import Items from '../Items';
 
-export default class Home extends PureComponent {
+function Home() {
 
-  handleSubmit = e => {
+  const [initialInput, setInput] = useState({
+    artist: '',
+    artists: []
+  });
+
+  const handleChange = ({ target }) => {
+    setInput({ ...initialInput, [target.name]: target.value  });
+    console.log(target.value);
+  };
+
+  const handleSubmit = e => {
     e.preventDefault();
-  }
-
-  componentDidMount() {
-    getArtist().then(artist => {
-      console.log(artist.artists);
+    const { artist } = initialInput;
+    getArtist(artist).then(artist => {
+      setInput({ artists: artist.artists });
     });
-  }
-  
-  render() {
-     
-    return (
-      
-      <>
-      <Input handleSubmit={this.handleSubmit} />
-      <Items />
-      </>
-    );
+  };
+  return (
 
-  }
+      <>
+      <Input artist={initialInput.artist} handleChange={handleChange} handleSubmit={handleSubmit} />
+      <Items artists={initialInput.artists}  />
+      </>
+  );
 
 }
+
+export default Home;
