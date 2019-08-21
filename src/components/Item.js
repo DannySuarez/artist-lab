@@ -1,9 +1,11 @@
 import React from 'react';
 
-function Item(props) {
+function Item({ artist }) {
+
   return (
     <div>
-      <p>Artist Name / props</p>
+      <p><span>Artist: </span>{artist.name}</p>
+      <p><span>Country:</span> {artist.country}</p>
     </div>
   );
 
