@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Input({  artist, handleSubmit, handleChange, }) {
 
@@ -11,5 +12,10 @@ function Input({  artist, handleSubmit, handleChange, }) {
 
 }
 
+Input.propTypes = {
+  artist: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired
+};
 
 export default Input;

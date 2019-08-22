@@ -12,18 +12,17 @@ function Home() {
 
   const handleChange = ({ target }) => {
     setInput({ ...initialInput, [target.name]: target.value  });
-    console.log(target.value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     const { artist } = initialInput;
     getArtist(artist).then(artist => {
-      setInput({ artists: artist.artists });
+      setInput({ ...initialInput, artists: artist.artists });
     });
   };
+  
   return (
-
       <>
       <Input artist={initialInput.artist} handleChange={handleChange} handleSubmit={handleSubmit} />
       <Items artists={initialInput.artists}  />

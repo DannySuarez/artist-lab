@@ -1,5 +1,6 @@
 import React from 'react';
 import Item from './Item';
+import PropTypes from 'prop-types';
 
 function Items({ artists }) {
   
@@ -13,5 +14,9 @@ function Items({ artists }) {
     </>
   );
 }
+
+Items.propTypes = {
+  artists: PropTypes.array.isRequired
+};
 
 export default Items;
