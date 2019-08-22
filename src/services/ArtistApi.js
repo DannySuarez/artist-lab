@@ -3,7 +3,6 @@ export const getArtist = (artist) => {
     .then(res => ([res.ok, res.json()]))
     .then(([ok, json]) => {
       if(!ok) throw 'Cant Fetch';
-
       return json;
     });
 };
