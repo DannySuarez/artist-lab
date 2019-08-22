@@ -21,11 +21,14 @@ function Home() {
       setInput({ ...initialInput, artists: artist.artists });
     });
   };
-  
+
   return (
       <>
-      <Input artist={initialInput.artist} handleChange={handleChange} handleSubmit={handleSubmit} />
-      <Items artists={initialInput.artists}  />
+      <Input 
+        artist={initialInput.artist}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit} />
+      <Items artists={initialInput.artists} />
       </>
   );
 
