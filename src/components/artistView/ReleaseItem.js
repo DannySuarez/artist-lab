@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 function ArtistItem({ release }) {
   return (
     <div>
-      <p>{release.title}</p>
-      <p>An Image</p>
+      <p>Artist: </p>
+      <p>Name: {release.title}</p>
+      <img src={`http://coverartarchive.org/release/${release.id}/front-250`}/>
     </div>
   );
 }
