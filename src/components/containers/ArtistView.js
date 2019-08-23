@@ -8,7 +8,8 @@ export default class ArtistView extends PureComponent {
   static propTypes = {
     match: PropTypes.shape({
       params: PropTypes.shape({
-        id: PropTypes.string.isRequired
+        id: PropTypes.string.isRequired,
+        artistName: PropTypes.string.isRequired
       }).isRequired
     }).isRequired
   }
@@ -27,7 +28,8 @@ export default class ArtistView extends PureComponent {
 
   render() {
     const { releases } = this.state;
-    return <ReleaseItems releases={releases}/>;
+    const { artistName } = this.props.match.params;
+    return <ReleaseItems releases={releases} artistName={artistName}/>;
   }
 
 }
