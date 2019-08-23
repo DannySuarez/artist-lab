@@ -1,24 +1,35 @@
-import React, { useState } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { getReleases } from '../../services/ArtistApi';
 import ReleaseItems from '../artistView/ReleaseItems';
 
-function ArtistView() {
+export default class ArtistView extends PureComponent {
 
-  const [releases, setReleases] = useState({
+  static propTypes = {
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired
+  }
+
+  state = {
     releases: []
-  });
+  }
 
-  getReleases()
-    .then(r => {
-      console.log(r.releases);
-    });
+  componentDidMount() {
+    const { match } = this.props;
+    getReleases(match.params.id)
+      .then(r => {
+        this.setState({ releases: r.releases });
+      });
+  }
 
-  return (
-    <>
-      <ReleaseItems />
-    </>
-  );
+  render() {
+    const { releases } = this.state;
+    return <ReleaseItems releases={releases}/>;
+  }
 
 }
 
-export default ArtistView;
+
