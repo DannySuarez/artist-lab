@@ -2,11 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function ArtistItem({ release }) {
+  
+  const image = release['cover-art-archive'].front 
+    ? `http://coverartarchive.org/release/${release.id}/front-250` 
+    : '/src/images/placeholder.jpg';
+
   return (
     <div>
       <p>Artist: </p>
       <p>Name: {release.title}</p>
-      <img src={`http://coverartarchive.org/release/${release.id}/front-250`}/>
+      <img src={image} />
     </div>
   );
 }
