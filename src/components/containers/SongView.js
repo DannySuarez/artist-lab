@@ -8,7 +8,8 @@ export default class SongView extends PureComponent {
   static propTypes = {
     match: PropTypes.shape({
       params: PropTypes.shape({
-        id: PropTypes.string.isRequired
+        id: PropTypes.string.isRequired,
+        artistName: PropTypes.string.isRequired
       }).isRequired
     }).isRequired
   }
@@ -28,7 +29,8 @@ export default class SongView extends PureComponent {
 
   render() {
     const { songs } = this.state;
-    return <SongList songs={songs} />;
+    const { artistName } = this.props.match.params;
+    return <SongList songs={songs} artistName={artistName} />;
   }
 
 }

@@ -1,17 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function SongItem({ song }) {
+function SongItem({ song, artistName }) {
   return (
     <div>
-      <p>{song.title}</p>
+      <Link to={`/lyrics/${artistName}/${song.title}/`}>
+        <p>{song.title}</p>
+      </Link>
     </div>
   );
 
 }
 
 SongItem.propTypes = {
-  song:PropTypes.object.isRequired
+  song: PropTypes.object.isRequired,
+  artistName: PropTypes.string.isRequired
 };
 
 export default SongItem;
