@@ -10,7 +10,7 @@ function ArtistItem({ release, artistName }) {
   return (
     <div>
       <p>Artist: {artistName} </p>
-      <Link to={`/songs/${release.title}/${release.id}`}>
+      <Link to={`/songs/${artistName}/${release.title}/${release.id}`}>
         <p>Name: {release.title}</p>
       </Link>
       <img src={image} />
